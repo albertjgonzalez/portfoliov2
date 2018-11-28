@@ -1,0 +1,29 @@
+body{
+    text-align: center;
+    align-content: center;
+    
+}
+#content{
+    margin: auto;
+    background-color: rgb(126, 126, 216);
+    width: 750px;
+    height: 750px;
+}
+#header{
+    margin: auto;
+    width: 750px;
+    height: 200px;
+    background-color: red;
+}
+#eaten{
+    float: right;
+    background-color: blue;
+    width: 50%;
+    height: 100%;
+}
+#notEaten{
+    float: left;
+    background-color: yellow; 
+    width: 50%;
+    height: 100%;
+}
