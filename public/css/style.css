@@ -1,71 +1,72 @@
-/* Enter Page CSS */
-#enterBox{
-    position: absolute;
-    top:-200px;
-}
-#enterButton{
-color: blue;
-}
-/* main CSS */
 body{
     text-align: center;
     align-content: center;
+    background-color: #2192ae;
+    height: 100%;
+    font-family: 'Unlock', cursive;
+    color: #e7e5e4;
 }
+
+/* Enter Page CSS */
+#enterBox{
+    position: absolute;
+  left: 50%;
+  top: 50%;
+}
+#enterButton{
+    font-size: 50px;
+    text-decoration: none;
+    font-family: 'Kumar One Outline', cursive;
+}
+button:focus {outline:0;}
+
+/* main CSS */
 #topBar{
-    background-color: red;
     width: 100%;
+    background-color: #e7e5e4;
     height: 200px; 
-    border-bottom: solid black 2px;
+    border-bottom: solid white 2px;
+    margin: 0;
 }
 #topBarLinks{
-    width: 75%;
-    float: right;
+    width: 70%;
+    position: fixed;
+    bottom: 5px;
+    right: 0;
+    font-size: 30px;
+    font-family: 'Kumar One Outline', cursive;
 }
-#topBarLinks a{
+#topBarLinks button{
     float: left;
     margin: auto;
     width: 30%;
+    background: transparent;
+    border: transparent;
+}
+.bar{
+    height: 750px;
+    background-color: #1d2c40;
+    border-right: solid white 2px;
+    display: none;
+    padding: 5%;
+}
+.content{
+    text-align: center;
+    display: none;
+    background-color: #2192ae;
+    padding: 1%;
+}
+.content h2{
+    float: left;
 }
 
 /* About CSS */
-
-#aboutBar{
-    height: 500px;
-    background-color: yellow;
-    border-right: solid black 2px;
-    display: none;
-}
-#aboutContent{
-    text-align: center;
+#aboutMe{
+    margin-top:5%; 
 }
 
 /* Contact CSS */
 
-#contactBar{
-    height: 750px;
-    background-color: blue;
-    border-right: solid black 2px;
-    display: none;
-}
-#contactContent{
-    text-align: center;
-    height: 750px;
-    display: none;
-}
-
 /* Portfolio CSS */
 
-#portfolioBar{
-    height: 750px;
-    background-color: white;
-    border-right: solid black 2px;
-    display: none;
-}
-#PortfolioContent{
-    text-align: center;
-    height: 750px;
-}
 
-.clearfix{
-    clear:both
-}

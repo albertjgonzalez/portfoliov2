@@ -1,4 +1,5 @@
 const express = require('express');
+var hb = require('express-handlebars').create();
 const router = express.Router();
 
 router.get('/',(req,res) =>{
