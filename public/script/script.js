@@ -40,11 +40,21 @@ $('document').ready(() =>{
    $('#aboutContent').css("display", "block");
    $('#aboutContent').addClass('animated slideInUp');
    $('#aboutContent').addClass('activeContent');
-   },1000)
+},
+setTimeout(createChart(),2000)
+,
+1000
+)
 })
 
 //about display
 $('#aboutButton').on('click', (event) =>{
+    if(haveActiveProject){
+        $('.activeProject').removeClass('animated slideInRight')
+        $('.activeProject').css('display', 'none')
+        $('.activeProject').removeClass('activeProject')
+        haveActiveProject = false;
+    }
     if(!$('#aboutBar').hasClass('active')){
         activeChanger();
         setTimeout(() =>{
@@ -66,6 +76,12 @@ $('#aboutButton').on('click', (event) =>{
 
 //contact display
 $('#contactButton').on('click', (event) =>{
+    if(haveActiveProject){
+        $('.activeProject').removeClass('animated slideInRight')
+        $('.activeProject').css('display', 'none')
+        $('.activeProject').removeClass('activeProject')
+        haveActiveProject = false;
+    }
     if(!$('#contactBar').hasClass('active')){
         activeChanger();
         setTimeout(() =>{
@@ -109,9 +125,9 @@ $('#portfolioButton').on('click', (event) =>{
 //button animation
 $( "button" ).hover(
     function() {
-      $( this ).addClass('animated rubberBand slow');
+      $( this ).addClass('animated pulse');
     }, function() {
-     $( this ).removeClass('animated rubberBand slow');
+     $( this ).removeClass('animated pulse');
     }
   );
 
@@ -122,6 +138,14 @@ $( "button" ).hover(
     }, function() {
     $( this ).removeClass('rubberBand slow');
     }
+  );
+
+  $( "span" ).hover(
+    function() {
+        $( this ).addClass('animated pulse');
+      }, function() {
+       $( this ).removeClass('animated pulse');
+      }
   );
 
   $('#enterButton').click(function(event) {
@@ -141,54 +165,123 @@ $( "button" ).hover(
 });
 
 //chart
-var ctx = document.getElementById("myChart").getContext('2d');
-var graphOptions = {
-    barThickness: 4
-}
-var myChart = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-        labels: ["HTML/CSS", "Javascript", "JQuery", "Node js"],
-        datasets: [{
-            borderWidth: 4,
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            backgroundColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ]
-        }]
-    },
-    options: {
-        legend: {
-            display: false
-          },
-          barThickness: '2px',
-          scales: {
-            xAxes: [{
-                gridLines: {
-                    color: "rgba(0, 0, 0, 0)",
-                }
-            }],
-            yAxes: [{
-                gridLines: {
-                    color: "rgba(0, 0, 0, 0)",
-                }   
+const createChart = () =>{
+    var ctx = document.getElementById("myChart").getContext('2d');
+
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: ["HTML/CSS", "Javascript", "JQuery", "Node js"],
+            datasets: [{
+                data: [12, 15, 10, 8],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                backgroundColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ]
             }]
         },
-        
+        options: {
+            legend: {
+                display: false,
+                lables: {
+                    display:true,
+                    fontolor:'black'
+                }
+                },
+              scales: {
+                xAxes: [{
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0)"
+                    },
+                    ticks:{
+                        display: false,
+                        beginAtZero:true
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0)",
+                    },
+                        ticks: {
+                            display: true,
+                            reverse: true,
+                            beginAtZero: true,
+                            fontColor: 'black',
+                            fontSize: 18,
+                        }
+                }]
+            },
+            responsiveAnimationDuration: 5000,
+            events: {
+                "onHover": null
+            }
+        }
+    });
+}
+
+//Portfolio Links
+let haveActiveProject = false;
+const showProject = function(projectDiv) {
+    if (!haveActiveProject){
+        $(projectDiv).addClass('animated slideInRight')
+        $(projectDiv).css('display', 'block')
+        $(projectDiv).addClass('activeProject')
+        haveActiveProject = true;
     }
-});
+    if (!$(projectDiv).hasClass('activeProject')){
+    $('.activeProject').removeClass('animated slideInRight')
+    $('.activeProject').addClass('animated slideOutRight')
+    setTimeout(
+        function(){
+        $('.activeProject').css('display', 'none')
+        $('.activeProject').removeClass('activeProject')
+        setTimeout(
+            function(){
+                $(projectDiv).removeClass('animated slideOutRight')
+                $(projectDiv).addClass('animated slideInRight')
+                $(projectDiv).css('display', 'block')
+                $(projectDiv).addClass('activeProject')
+            }
+        ,200)
+        }
+    ,500)
+    }
+};
+
+$('.projectLink').on('click', (e) =>{
+    
+var link = event.target.id;
+    switch(link) {
+        case 'newbie':
+            showProject(newbieTutorDiv)
+            break;
+        case 'codeHacker':
+            showProject(codeHackerDiv)
+            break;
+        case 'giphy':
+            showProject(giphyAppDiv)
+            break;
+        case 'rick':
+            showProject(rickDiv)
+            break;  
+        case 'liri':
+            showProject(liriDiv)
+            break;  
+        default:
+            return
+    }
+})
