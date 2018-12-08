@@ -278,8 +278,8 @@ var link = e.target.id;
         case 'rick':
             showProject(rickDiv)
             break;  
-        case 'liri':
-            showProject(liriDiv)
+        case 'calc':
+            showProject(calcDiv)
             break;  
         default:
             return
