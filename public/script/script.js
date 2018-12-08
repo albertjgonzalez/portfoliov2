@@ -264,7 +264,7 @@ const showProject = function(projectDiv) {
 
 $('.projectLink').on('click', (e) =>{
     
-var link = event.target.id;
+var link = e.target.id;
     switch(link) {
         case 'newbie':
             showProject(newbieTutorDiv)
