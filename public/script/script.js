@@ -275,8 +275,8 @@ var link = e.target.id;
         case 'giphy':
             showProject(giphyAppDiv)
             break;
-        case 'rick':
-            showProject(rickDiv)
+        case 'safe':
+            showProject(safeDiv)
             break;  
         case 'calc':
             showProject(calcDiv)
