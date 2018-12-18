@@ -1,29 +1,11 @@
-var express = require("express");
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 5000;
 
-var PORT = process.env.PORT || 8000;
+// console.log that your server is up and running
+app.listen(port, () => console.log(`Listening on port ${port}`));
 
-var app = express();
-
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static('public'))
-
-// Parse application body as JSON
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// Set Handlebars.
-var exphbs = require("express-handlebars");
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
-// Import routes and give the server access to them.
-var routes = require("./controllers/_controller.js");
-
-app.use(routes);
-
-// Start our server so that it can begin listening to client requests.
-app.listen(PORT, function() {
-  // Log (server-side) when our server has started
-  console.log("Server listening on: http://localhost:" + PORT);
+// create a GET route
+app.get('/express_backend', (req, res) => {
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
 });
