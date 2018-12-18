@@ -1,20 +1,24 @@
 {
-  "name": "tempBurger",
+  "name": "react-portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertjgonzalez/PortfolioV3.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertjgonzalez/PortfolioV3/issues"
+  },
+  "homepage": "https://github.com/albertjgonzalez/PortfolioV3#readme",
   "dependencies": {
-    "animate.css": "^3.7.0",
-    "express": "^4.16.4",
-    "express-handlebars": "^3.0.0",
-    "mailto": "^0.1.2",
-    "mysql": "^2.16.0",
-    "nodemailer": "^4.7.0"
+    "express": "^4.16.4"
   }
 }
